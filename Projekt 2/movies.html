@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Filmy</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- JS -->
+    <script defer src="movies.js"></script>
+  </head>
+
+  <body>
+    <main class="container">
+      <!-- 1) Tlačítko zpátky -->
+      <div class="page-topbar" style="text-align: center; padding-top: 2rem">
+        <a href="index.html" class="pill">Úvodní strana</a>
+      </div>
+
+      <!-- 2) Roletka pro vyhledávání -->
+      <div style="text-align: center; margin-top: 1rem">
+        <select id="querySelect" class="select">
+          <option value="" selected disabled>Vyberte možnost</option>
+          <option value="girl">Girl</option>
+          <option value="love">Love</option>
+          <option value="war">War</option>
+          <option value="ocean">Ocean</option>
+          <option value="horor">Horor</option>
+        </select>
+      </div>
+
+      <!-- 3) Sem se vykreslí filmy z API -->
+      <section class="gallery" id="gallery" style="margin-top: 2rem"></section>
+    </main>
+  </body>
+</html>

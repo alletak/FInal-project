@@ -1,0 +1,435 @@
+/* =========================
+   GLOBAL
+========================= */
+:root {
+  --red: rgb(214, 28, 28);
+  --bg: #000;
+  --text: #fff;
+  --muted: rgba(255, 255, 255, 0.75);
+  --line: rgba(255, 255, 255, 0.35);
+  --max: 1100px;
+}
+
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.container {
+  width: min(var(--max), calc(100% - 2rem));
+  margin-inline: auto;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1.1rem;
+  background: var(--red);
+  color: #fff;
+  font-weight: 700;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.btn:hover {
+  filter: brightness(1.05);
+}
+.btn:active {
+  transform: translateY(1px);
+}
+
+.pill {
+  display: inline-block;
+  background: var(--red);
+  color: #fff;
+  font-weight: 700;
+  padding: 0.45rem 0.75rem;
+  font-size: 0.95rem;
+}
+
+/* =========================
+   SCROLL TO TOP BUTTON
+========================= */
+
+#scrollTopBtn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  font-size: 3.5rem;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--red);
+  border: none;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 200;
+}
+
+#scrollTopBtn.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+#scrollTopBtn:hover {
+  filter: brightness(1.1);
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 100;
+}
+
+.header-inner {
+  width: 100%;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  height: 32px;
+  width: auto;
+}
+
+.btn-register {
+  font-size: 0.9rem;
+  padding: 0.4rem 0.8rem;
+}
+
+.hero {
+  min-height: 85vh;
+  display: grid;
+  place-items: center;
+  position: relative;
+  overflow: hidden;
+  padding-top: 80px;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.85) 60%,
+      rgba(0, 0, 0, 1) 100%
+    ),
+    url("./img/background.jpg") center/cover no-repeat;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 6rem 0 3rem;
+}
+
+.hero h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  line-height: 1.08;
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  margin: 0 0 0.75rem;
+  max-width: 18ch;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.hero p {
+  margin: 0.35rem 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.hero__small {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+.form-row {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.input {
+  min-width: min(520px, 100%);
+  padding: 0.75rem 0.9rem;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--line);
+  color: white;
+  outline: none;
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* =========================
+ MOVIES PAGE
+========================= */
+.movies-preview {
+  padding: 3rem 0 4rem;
+  text-align: center;
+}
+
+.movies-row {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.movies-row img {
+  width: 220px;
+  max-width: 80vw;
+  transition: transform 0.25s ease;
+}
+
+.movies-row img:hover {
+  transform: scale(1.08);
+}
+
+.movies-button {
+  margin-top: 2rem;
+}
+
+/* =========================
+   FOOTER
+========================= */
+.footer {
+  padding: 3rem 0 4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem 2rem;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.footer a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.footer a:hover {
+  color: #fff;
+}
+
+@media (min-width: 720px) {
+  .footer__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* =========================
+   MOVIES PAGE - TOPBAR + SELECT
+========================= */
+.page-topbar {
+  text-align: center;
+  padding-top: 2rem;
+}
+
+.select {
+  margin-top: 1rem;
+  padding: 0.6rem 0.75rem;
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  border: 2px solid var(--red);
+  outline: none;
+  min-width: 220px;
+}
+
+.select option {
+  color: #000;
+}
+
+/* =========================
+   MOVIES PAGE - GALLERY + CARDS (TILT RIGHT)
+========================= */
+
+.gallery {
+  margin: 2.5rem auto 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.card {
+  width: 180px;
+  max-width: 42vw;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7);
+  transform: rotate(6deg);
+  transform-origin: center bottom;
+  transition: transform 0.22s ease;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.card:hover {
+  transform: rotate(0deg);
+}
+
+.card__fallback {
+  height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 0.75rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.9rem;
+}
+
+/* =========================
+   REGISTER PAGE 
+========================= */
+
+.dark-bg {
+  min-height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.99), rgba(0, 0, 0, 0.99)),
+    url("img/movies-bg.jpeg") center / cover no-repeat;
+}
+
+.form-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  position: relative;
+  padding: 4rem 0;
+}
+
+.form-card {
+  position: relative;
+  z-index: 2;
+  width: min(820px, calc(100% - 2rem));
+}
+
+.form-stack {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.form-input {
+  width: 100%;
+  padding: 1rem 1rem;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: #fff;
+  outline: none;
+}
+
+/* focus */
+.form-input:focus {
+  border-color: var(--red);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* špatné (HTML5 validace) */
+.form-input:invalid:not(:placeholder-shown) {
+  border-color: var(--red);
+}
+
+/* správné (HTML5 validace) */
+.form-input:valid:not(:placeholder-shown) {
+  border-color: #2ecc71;
+}
+
+/* ===== Hesla: vypni automatické :valid/:invalid barvení ===== */
+input[name="password"]:valid:not(:placeholder-shown),
+input[name="password"]:invalid:not(:placeholder-shown),
+input[name="passwordRepeat"]:valid:not(:placeholder-shown),
+input[name="passwordRepeat"]:invalid:not(:placeholder-shown) {
+  border-color: rgba(255, 255, 255, 0.5); /* zpět na default */
+}
+
+/* ===== Hesla: barvy řídí JS ===== */
+.pw-ok {
+  border-color: #2ecc71 !important;
+}
+
+.pw-error {
+  border-color: rgb(214, 28, 28) !important;
+}
+
+.form-submit {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 480px) {
+  .header-inner {
+    padding: 0.8rem 1rem;
+  }
+
+  .logo {
+    height: 26px;
+  }
+
+  .btn-register {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    transform: rotate(0deg) !important;
+    transition: none !important;
+  }
+
+  .card:hover {
+    transform: rotate(0deg) !important;
+  }
+}
